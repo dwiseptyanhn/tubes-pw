@@ -164,7 +164,7 @@
                                             </tr>
                                         </thead>
                                         <?php
-                                            $q = mysqli_query($conn,"SELECT * FROM absen JOIN (SELECT fingerprint.fingerprint,struktur.* FROM fingerprint JOIN struktur ON fingerprint.nip = struktur.nip) AS people ON absen.fingerprint = people.fingerprint WHERE nip = 12345678910");
+                                            $q = mysqli_query($conn,"SELECT * FROM absen JOIN (SELECT fingerprint.fingerprint,struktur.* FROM fingerprint JOIN struktur ON fingerprint.nip = struktur.nip) AS people ON absen.fingerprint = people.fingerprint WHERE nip = $_SESSION[NIP]");
                                         ?>
                                         <tbody>
                                             <tr>

@@ -151,7 +151,7 @@
                 <!-- Row -->
                 <div class="row">
                     <?php 
-                        $q = mysqli_query($conn,"SELECT * FROM struktur WHERE nip = 12345678910");
+                        $q = mysqli_query($conn,"SELECT * FROM struktur WHERE nip = $_SESSION[NIP]");
                         $data = mysqli_fetch_assoc($q);
                     ?>
                     <!-- Column -->
