@@ -1,3 +1,4 @@
+<?php require_once 'connection/connect.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,13 +47,13 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="index.php">
                         <!-- Logo icon -->
                         <b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
                             <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            
+
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
@@ -102,16 +103,16 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li>
-                            <a href="index.html" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
+                            <a href="index.php" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="pages-profile.html" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Profile</a>
+                            <a href="pages-profile.php" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Profile</a>
                         </li>
                         <li>
-                            <a href="table-basic.html" class="waves-effect"><i class="fa fa-table m-r-10" aria-hidden="true"></i>Basic Table</a>
+                            <a href="table-basic.php" class="waves-effect"><i class="fa fa-table m-r-10" aria-hidden="true"></i>Basic Table</a>
                         </li>
                     </ul>
-                    
+
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
@@ -139,7 +140,7 @@
                             <li class="breadcrumb-item active">Profile</li>
                         </ol>
                     </div>
-                    
+
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Bread crumb and right sidebar toggle -->
@@ -149,17 +150,17 @@
                 <!-- ============================================================== -->
                 <!-- Row -->
                 <div class="row">
+                    <?php 
+                        $q = mysqli_query($conn,"SELECT * FROM struktur WHERE nip = 12345678910");
+                        $data = mysqli_fetch_assoc($q);
+                    ?>
                     <!-- Column -->
                     <div class="col-lg-4 col-xlg-3 col-md-5">
                         <div class="card">
                             <div class="card-block">
-                                <center class="m-t-30"> <img src="../assets/images/users/5.jpg" class="img-circle" width="150" />
-                                    <h4 class="card-title m-t-10">Hanna Gover</h4>
-                                    <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
-                                    <div class="row text-center justify-content-md-center">
-                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">254</font></a></div>
-                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-picture"></i> <font class="font-medium">54</font></a></div>
-                                    </div>
+                                <center class="m-t-30"> <img src="../assets/images/users/<?php echo $data['foto']; ?>" class="img-circle" width="150" />
+                                    <h4 class="card-title m-t-10"><?php echo $data['nama']; ?></h4>
+                                    <h6 class="card-subtitle"><?php echo $data['jabatan']; ?></h6>
                                 </center>
                             </div>
                         </div>
@@ -173,44 +174,19 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Full Name</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
+                                            <input type="text" class="form-control form-control-line" value="<?php echo $data['nama']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="example-email" class="col-md-12">Email</label>
                                         <div class="col-md-12">
-                                            <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email">
+                                            <input type="email" class="form-control form-control-line" name="example-email" id="example-email" value="<?php echo $data['jabatan']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Password</label>
                                         <div class="col-md-12">
-                                            <input type="password" value="password" class="form-control form-control-line">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Phone No</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="123 456 7890" class="form-control form-control-line">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Message</label>
-                                        <div class="col-md-12">
-                                            <textarea rows="5" class="form-control form-control-line"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-12">Select Country</label>
-                                        <div class="col-sm-12">
-                                            <select class="form-control form-control-line">
-                                                <option>Indramayu</option>
-                                                <option>Balongan</option>
-                                                <option>Singajaya</option>
-                                                <option>Tegalurung</option>
-                                                <option>Sukaurip</option>
-                                                <option>Singaraja</option>
-                                            </select>
+                                            <input type="password" value="password" class="form-control form-control-line" value="<?php echo $data['password']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
