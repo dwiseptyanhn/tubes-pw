@@ -1,2 +1,2 @@
 <?php
-    $conn = mysqli_connect('localhost','root','','tubes_web');
+$conn = mysqli_connect('localhost', 'root', '', 'tubes_pw');
